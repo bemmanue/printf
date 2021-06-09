@@ -106,8 +106,8 @@ int	ft_printf(const char *fmt, ...)
 
 int	main(void)
 {
-	char	*str;
-	char	c;
+	char *str;
+	char c;
 
 	c = 'U';
 	str = "Kamil";
