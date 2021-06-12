@@ -49,10 +49,15 @@ int	ft_printf(const char *fmt, ...)
 
 int	main(void)
 {
-	char			c;
+	char	c;
+	char	*str;
+	int 	d;
 
 	c = 'U';
+	str = "Yulya";
+	d = 2341;
 
-	ft_printf("hello %c\n", c);
+//	ft_printf("hello %c\n", c);
+	printf("%*s", 5, str);
 	return (0);
 }

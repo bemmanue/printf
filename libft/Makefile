@@ -9,24 +9,25 @@ SRCS		=	ft_itoa.c			\
 
 OBJS		=	$(SRCS:.c=.o)
 HEAD		=	libft.h
+
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror -c
 RM			=	rm -f
 AR			=	ar -rcs
 
-all: 		$(NAME)
+all: 			$(NAME)
 
-.c.o: 		$(HEAD)
-			$(CC) $(CFLAGS) $< -o $@
+.c.o: 			$(HEAD)
+				$(CC) $(CFLAGS) $< -o $@
 
-$(NAME): 	$(OBJS) $(HEAD)
-			$(AR) $(NAME) $?
+$(NAME): 		$(OBJS) $(HEAD)
+				$(AR) $(NAME) $?
 
 clean:
-			$(RM) $(OBJS)
+				$(RM) $(OBJS)
 
-fclean: 	clean
-			$(RM) $(NAME)
+fclean: 		clean
+				$(RM) $(NAME)
 
-re:			fclean all
-.PHONY:		all clean fclean re
+re:				fclean all
+.PHONY:			all clean fclean re

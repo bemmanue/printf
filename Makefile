@@ -10,22 +10,25 @@ LIBFT			=	libft.a
 LIBFT_PATH		=	libft/
 
 OBJS			=	$(SRCS:.c=.o)
+HEAD			=	./base/libftprintf.h
+LIBFT_OBJS		=	$(LIBFT_PATH)*.o
+LIBFTMAKE		=	$(MAKE) -C $(LIBFT_PATH)
+
+CFLAGS			=	-Wall -Wextra -Werror -c
 CC				=	gcc
-CFLAGS			=	-Wall -Wextra -Werror
 RM				=	rm -f
 AR				=	ar crs
 
-LIBFT_OBJS		=	$(LIBFT_PATH)*.o
-
-LIBFTMAKE		=	$(MAKE) -C $(LIBFT_PATH)
-
 all:				$(NAME)
 
-$(NAME):			$(OBJS) pmake
+.c.o: 				$(HEAD)
+					$(CC) $(CFLAGS) $< -o $@
+
+$(NAME):			$(OBJS) make
 					$(AR) $(NAME) $(OBJS) $(LIBFT_OBJS)
 
-pmake:
-					${LIBFTMAKE}
+make:
+					$(LIBFTMAKE)
 
 clean:
 					make -C $(LIBFT_PATH) clean
