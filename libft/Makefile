@@ -5,7 +5,9 @@ SRCS		=	ft_itoa.c			\
 				ft_high_x_itoa.c	\
 				ft_low_x_itoa.c		\
 				ft_unsigned_itoa.c	\
-				ft_isalpha.c
+				ft_isalpha.c		\
+				ft_isdigit.c		\
+				ft_atoi.c
 
 OBJS		=	$(SRCS:.c=.o)
 HEAD		=	libft.h

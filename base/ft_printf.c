@@ -38,7 +38,7 @@ int	ft_printf(const char *fmt, ...)
 	while(fmt[i])
 	{
 		if (fmt[i] == '%')
-			ft_parser(tab, fmt, ++i);
+			i = ft_parsing(tab, fmt, ++i);
 		else
 			len += write(1, &fmt[i], 1);
 		i++;
@@ -54,10 +54,11 @@ int	main(void)
 	int 	d;
 
 	c = 'U';
-	str = "Yulya";
+	str = "cat";
 	d = 2341;
 
-//	ft_printf("hello %c\n", c);
-	printf("%*s", 5, str);
+	printf("%d", ft_printf("hello %s", str));
+	printf("\n");
+	printf("%d", printf("hello %s", str));
 	return (0);
 }

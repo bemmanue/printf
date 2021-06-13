@@ -2,22 +2,23 @@
 NAME			=	libftprintf.a
 
 SRCS			=	./base/ft_printf.c	\
-					./base/ft_parser.c	\
-					./base/ft_output.c
+					./base/ft_parsing.c	\
+					./base/ft_output.c	\
+					./base/ft_dash.c
 SRCS_PATH		=	base/
 
 LIBFT			=	libft.a
 LIBFT_PATH		=	libft/
 
 OBJS			=	$(SRCS:.c=.o)
-HEAD			=	./base/libftprintf.h
+HEAD			=	./includes/ft_printf.h
 LIBFT_OBJS		=	$(LIBFT_PATH)*.o
 LIBFTMAKE		=	$(MAKE) -C $(LIBFT_PATH)
 
 CFLAGS			=	-Wall -Wextra -Werror -c
 CC				=	gcc
 RM				=	rm -f
-AR				=	ar crs
+AR				=	ar -rcs
 
 all:				$(NAME)
 

@@ -20,6 +20,16 @@ typedef struct		s_list
 
 int		ft_printf(const char *fmt, ...);
 
+t_list	*ft_init(t_list *tab);
+
+int 	ft_parsing(t_list *tab, const char *fmt, int i);
+
+int		ft_type_parsing(t_list *tab, const char *fmt, int i);
+
+int		ft_eval_dash(t_list *tab, const char *fmt, int i);
+
+int		ft_eval_width(t_list *tab, const char *fmt, int i);
+
 void	ft_print_char(t_list *tab);
 
 void	ft_print_string(t_list *tab);
@@ -36,6 +46,5 @@ void	ft_print_unsigned_decimal(t_list *tab);
 
 void	ft_print_percent(void);
 
-void	ft_parser(t_list *tab, const char *fmt, int i);
 
 #endif

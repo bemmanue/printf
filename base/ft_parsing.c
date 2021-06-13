@@ -2,7 +2,7 @@
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
 
-void	ft_evaluate_variable(t_list *tab, const char *fmt, int i)
+int	ft_type_parsing(t_list *tab, const char *fmt, int i)
 {
 	if (fmt[i] == 'c')
 		ft_print_char(tab);
@@ -20,21 +20,24 @@ void	ft_evaluate_variable(t_list *tab, const char *fmt, int i)
 		ft_print_unsigned_hexadecimal_high(tab);
 	else if (fmt[i] == '%')
 		ft_print_percent();
+	return (i);
 }
 
-void	ft_parser(t_list *tab, const char *fmt, int i)
+int	ft_parsing(t_list *tab, const char *fmt, int i)
 {
 	while (!(ft_isalpha(fmt[i]) || fmt[i] == '%'))
 	{
 		if (fmt[i] == '-')
-			tab->dash = 1;
-//		else if (fmt[i]) == '0')
-//			tab->zero = 1;
-		else if (fmt[i] == '.')
-			tab->width = 1;
-		else if (fmt[i] == '*')
-			tab->prec = 1;
-		i++;
+			i = ft_eval_dash(tab, fmt, i);
+//		if (fmt[i]) == '0')
+//			i = ft_eval_zero(tab, fmt, i);
+//		if (fmt[i] == '.')
+//			i = ft_eval_prec(tab, fmt, i);
+//		if (fmt[i] == '*')
+//			i = ft_eval_star(tab, fmt, i);
+		if (ft_isdigit(fmt[i]))
+			i = ft_eval_width(tab, fmt, i);
 	}
-	ft_evaluate_variable(tab, fmt, i);
+	i = ft_type_parsing(tab, fmt, i);
+	return (i);
 }
