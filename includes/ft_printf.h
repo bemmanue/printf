@@ -30,6 +30,10 @@ int		ft_eval_dash(t_list *tab, const char *fmt, int i);
 
 int		ft_eval_width(t_list *tab, const char *fmt, int i);
 
+int		ft_eval_precision(t_list *tab, const char *fmt, int i);
+
+int		ft_eval_star(t_list *tab, int i);
+
 void	ft_print_char(t_list *tab);
 
 void	ft_print_string(t_list *tab);

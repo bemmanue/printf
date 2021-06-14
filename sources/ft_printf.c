@@ -54,13 +54,15 @@ int	main(void)
 	char	c;
 	char	*str;
 	int 	d;
+	int		l;
 
+	l = 5;
 	c = 'U';
 	str = "cat";
 	d = 555;
 
-	printf("%d", ft_printf("hello %-8c %-5c", c, c));
+	printf("%d", ft_printf("hello %*d", 9, d));
 	printf("\n");
-	printf("%d", printf("hello %-8c %-5c", c, c));
+	printf("%d", printf("hello %*d", 5, d));
 	return (0);
 }

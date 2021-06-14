@@ -31,10 +31,10 @@ int	ft_parsing(t_list *tab, const char *fmt, int i)
 			i = ft_eval_dash(tab, fmt, i);
 //		if (fmt[i]) == '0')
 //			i = ft_eval_zero(tab, fmt, i);
-//		if (fmt[i] == '.')
-//			i = ft_eval_prec(tab, fmt, i);
-//		if (fmt[i] == '*')
-//			i = ft_eval_star(tab, fmt, i);
+		if (fmt[i] == '.')
+			i = ft_eval_precision(tab, fmt, i);
+		if (fmt[i] == '*')
+			i = ft_eval_star(tab, i);
 		if (ft_isdigit(fmt[i]))
 			i = ft_eval_width(tab, fmt, i);
 	}
