@@ -19,7 +19,7 @@ int	ft_type_parsing(t_list *tab, const char *fmt, int i)
 	else if (fmt[i] == 'X')
 		ft_print_unsigned_hexadecimal_high(tab);
 	else if (fmt[i] == '%')
-		ft_print_percent();
+		ft_print_percent(tab);
 	return (i);
 }
 

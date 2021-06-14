@@ -1,13 +1,13 @@
 
 NAME			=	libftprintf.a
 
-SRCS			=	./base/ft_printf.c	\
-					./base/ft_parsing.c	\
-					./base/ft_output.c	\
-					./base/ft_dash.c
-SRCS_PATH		=	base/
+SRCS			=	./sources/ft_printf.c		\
+					./sources/ft_parsing.c		\
+					./sources/ft_output.c		\
+					./sources/ft_dash.c			\
+					./sources/ft_print_string.c
 
-LIBFT			=	libft.a
+LIBFT			=	./libft/libft.a
 LIBFT_PATH		=	libft/
 
 OBJS			=	$(SRCS:.c=.o)
@@ -36,7 +36,7 @@ clean:
 					$(RM) $(OBJS)
 
 fclean: 			clean
-					$(RM) $(NAME) $(LIBFT_PATH)$(LIBFT)
+					$(RM) $(NAME) $(LIBFT)
 
 re:         		fclean all
 .PHONY:				all clean fclean re

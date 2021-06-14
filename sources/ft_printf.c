@@ -19,6 +19,7 @@ t_list	*ft_init(t_list *tab)
 	tab->zero = 0;
 	tab->width = 0;
 	tab->prec = -1;
+	tab->length = 0;
 	return (tab);
 }
 
@@ -44,6 +45,7 @@ int	ft_printf(const char *fmt, ...)
 		i++;
 	}
 	va_end(tab->args);
+	len += tab->length;
 	return (len);
 }
 
@@ -55,10 +57,10 @@ int	main(void)
 
 	c = 'U';
 	str = "cat";
-	d = 2341;
+	d = 555;
 
-	printf("%d", ft_printf("hello %s", str));
+	printf("%d", ft_printf("hello %-8c %-5c", c, c));
 	printf("\n");
-	printf("%d", printf("hello %s", str));
+	printf("%d", printf("hello %-8c %-5c", c, c));
 	return (0);
 }
