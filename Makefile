@@ -4,8 +4,8 @@ NAME			=	libftprintf.a
 SRCS			=	./sources/ft_printf.c		\
 					./sources/ft_parsing.c		\
 					./sources/ft_output.c		\
-					./sources/ft_dash.c			\
-					./sources/ft_print_string.c
+					./sources/ft_evaluation.c	\
+					./sources/ft_alignment.c
 
 LIBFT			=	./libft/libft.a
 LIBFT_PATH		=	libft/
