@@ -45,6 +45,7 @@ void	ft_print_pointer(t_list *tab)
 	//(unsigned long)va_arg(args, void *);
 }
 */
+
 void	ft_print_integer(t_list *tab)
 {
 	int 	i;
@@ -58,16 +59,11 @@ void	ft_print_integer(t_list *tab)
 	len = ft_strlen(num);
 	if (num[i] == '-')
 		tab->length += write(1, &num[i++], 1);
-	if (tab->width > len && !(tab->dash))
-	{
-		if (tab->zero)
-			ft_add_zero(tab, len);
-		else
-			ft_right_alignment(tab, len);
-	}
+	if (tab->width > len || tab->prec > len)
+		ft_check_alignment(tab, len);
 	while (num[i])
 		tab->length += write(1, &num[i++], 1);
-	if (tab->width > len && tab->dash)
+	if ((tab->width > len || tab->prec > len) && tab->dash)
 		ft_left_alignment(tab, len);
 	tab->width = 0;
 	tab->dash = 0;

@@ -36,7 +36,7 @@ int ft_eval_precision(t_list *tab, const char *fmt, int i)
 		p = va_arg(tab->args, int);
 		tab->prec = p;
 	}
-	return (i);
+	return (++i);
 }
 
 int	ft_eval_width(t_list *tab, const char *fmt, int i)
