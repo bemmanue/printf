@@ -32,6 +32,8 @@ int		ft_eval_width(t_list *tab, const char *fmt, int i);
 
 int		ft_eval_precision(t_list *tab, const char *fmt, int i);
 
+int		ft_eval_zero(t_list *tab, int i);
+
 int		ft_eval_star(t_list *tab, int i);
 
 void	ft_print_char(t_list *tab);
@@ -53,6 +55,8 @@ void	ft_print_percent(t_list *tab);
 void	ft_right_alignment(t_list *tab, int len);
 
 void	ft_left_alignment(t_list *tab, int len);
+
+void	ft_add_zero(t_list *tab, int len);
 
 
 #endif

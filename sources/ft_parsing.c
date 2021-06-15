@@ -29,8 +29,8 @@ int	ft_parsing(t_list *tab, const char *fmt, int i)
 	{
 		if (fmt[i] == '-')
 			i = ft_eval_dash(tab, fmt, i);
-//		if (fmt[i]) == '0')
-//			i = ft_eval_zero(tab, fmt, i);
+		if (fmt[i] == '0')
+			i = ft_eval_zero(tab, i);
 		if (fmt[i] == '.')
 			i = ft_eval_precision(tab, fmt, i);
 		if (fmt[i] == '*')

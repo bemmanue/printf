@@ -58,11 +58,11 @@ int	main(void)
 
 	l = 5;
 	c = 'U';
-	str = "cat";
-	d = 555;
+	str = "abababababab";
+	d = 333;
 
-	printf("%d", ft_printf("hello %*d", 9, d));
+	printf("%d", ft_printf("hello %*d", 4, d));
 	printf("\n");
-	printf("%d", printf("hello %*d", 5, d));
+	printf("%d", printf("hello %-5.9d", d));
 	return (0);
 }

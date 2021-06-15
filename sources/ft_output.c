@@ -56,8 +56,15 @@ void	ft_print_integer(t_list *tab)
 	d = va_arg(tab->args, int);
 	num = ft_itoa(d);
 	len = ft_strlen(num);
+	if (num[i] == '-')
+		tab->length += write(1, &num[i++], 1);
 	if (tab->width > len && !(tab->dash))
-		ft_right_alignment(tab, len);
+	{
+		if (tab->zero)
+			ft_add_zero(tab, len);
+		else
+			ft_right_alignment(tab, len);
+	}
 	while (num[i])
 		tab->length += write(1, &num[i++], 1);
 	if (tab->width > len && tab->dash)
@@ -78,7 +85,12 @@ void	ft_print_unsigned_decimal(t_list *tab)
  	num = ft_unsigned_itoa(u);
  	len = ft_strlen(num);
 	if (tab->width > len && !(tab->dash))
-		ft_right_alignment(tab, len);
+	{
+		if (tab->zero)
+			ft_add_zero(tab, len);
+		else
+			ft_right_alignment(tab, len);
+	}
  	while(num[i])
 		tab->length += write(1, &num[i++], 1);
 	if (tab->width > len && tab->dash)
@@ -99,7 +111,12 @@ void	ft_print_unsigned_hexadecimal_low(t_list *tab)
  	num = ft_low_x_itoa(x);
  	len = ft_strlen(num);
 	if (tab->width > len && !(tab->dash))
-		ft_right_alignment(tab, len);
+	{
+		if (tab->zero)
+			ft_add_zero(tab, len);
+		else
+			ft_right_alignment(tab, len);
+	}
  	while (num[i])
 		tab->length += write(1, &num[i++], 1);
 	if (tab->width > len && tab->dash)
@@ -120,7 +137,12 @@ void	ft_print_unsigned_hexadecimal_high(t_list *tab)
 	num = ft_high_x_itoa(x);
 	len = ft_strlen(num);
 	if (tab->width > len && !(tab->dash))
-		ft_right_alignment(tab, len);
+	{
+		if (tab->zero)
+			ft_add_zero(tab, len);
+		else
+			ft_right_alignment(tab, len);
+	}
 	while (num[i])
 		tab->length += write(1, &num[i++], 1);
 	if (tab->width > len && tab->dash)
