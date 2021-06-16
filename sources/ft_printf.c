@@ -13,6 +13,15 @@
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
 
+t_list *ft_clean_flags(t_list *tab)
+{
+	tab->dash = 0;
+	tab->zero = 0;
+	tab->width = 0;
+	tab->prec = -1;
+	return (tab);
+}
+
 t_list	*ft_init(t_list *tab)
 {
 	tab->dash = 0;
@@ -61,14 +70,14 @@ int	main(void)
 
 	l = 5;
 	c = 'U';
-	s = "abab";
+	s = "myaushenka";
 	d = 11111;
-	i = -55555;
+	i = 7;
 	u = 1234567;
 	x = 1234567890;
 
-	printf("%d", ft_printf("%15.10d", i));
+	printf("%d", ft_printf("%2.s", s));
 	printf("\n");
-	printf("%d", printf("%15.10d", i));
+	printf("%d", printf("%2.s", s));
 	return (0);
 }

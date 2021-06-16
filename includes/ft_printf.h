@@ -22,6 +22,8 @@ int		ft_printf(const char *fmt, ...);
 
 t_list	*ft_init(t_list *tab);
 
+t_list	*ft_clean_flags(t_list *tab);
+
 int 	ft_parsing(t_list *tab, const char *fmt, int i);
 
 int		ft_type_parsing(t_list *tab, const char *fmt, int i);
@@ -58,12 +60,14 @@ void	ft_right_alignment(t_list *tab, int len);
 
 void	ft_left_alignment(t_list *tab, int len);
 
-void	ft_add_zero(t_list *tab, int len);
+void	ft_print_zero(t_list *tab, int len);
 
 void	ft_print_null_again(t_list *tab, int len);
 
 void	ft_print_null(t_list *tab, int len);
 
 void	ft_print_space(t_list *tab, int len);
+
+void	ft_check_alignment_string(t_list *tab, int len);
 
 #endif

@@ -11,14 +11,13 @@ void	ft_print_string(t_list *tab)
 	i = 0;
 	s = va_arg(tab->args, char *);
 	len = ft_strlen(s);
-//	if (tab->width > len && !(tab->dash))
-//		ft_right_alignment(tab, len);
+	if (tab->width > len && !(tab->dash))
+		ft_check_alignment_string(tab, len);
 	while (s[i])
 		tab->length += write(1, &s[i++], 1);
 	if (tab->width > len && tab->dash)
 		ft_left_alignment(tab, len);
-	tab->width = 0;
-	tab->dash = 0;
+	tab = ft_clean_flags(tab);
 }
 
 void	ft_print_char(t_list *tab)
@@ -31,8 +30,7 @@ void	ft_print_char(t_list *tab)
 	tab->length += write(1, &c, 1);
 	if (tab->width > 1 && tab->dash)
 		ft_left_alignment(tab, 1);
-	tab->width = 0;
-	tab->dash = 0;
+	tab = ft_clean_flags(tab);
 }
 
 /*
@@ -63,9 +61,7 @@ void	ft_print_integer(t_list *tab)
 		tab->length += write(1, &num[i++], 1);
 	if ((tab->width > len || tab->prec > len) && tab->dash)
 		ft_left_alignment(tab, len);
-	tab->width = 0;
-	tab->dash = 0;
-	tab->prec = 0;
+	tab = ft_clean_flags(tab);
 }
 
 void	ft_print_unsigned_decimal(t_list *tab)
@@ -79,16 +75,13 @@ void	ft_print_unsigned_decimal(t_list *tab)
  	u = va_arg(tab->args, unsigned int);
  	num = ft_unsigned_itoa(u);
  	len = ft_strlen(num);
-	if (tab->zero)
-		tab->zero = 0;
-//	if (tab->width > len || tab->prec > len)
-//		ft_check_alignment(tab, len);
+	if (tab->width > len || tab->prec > len)
+		i = ft_check_alignment(tab, len, num);
  	while(num[i])
 		tab->length += write(1, &num[i++], 1);
 	if (tab->width > len && tab->dash)
 		ft_left_alignment(tab, len);
-	tab->width = 0;
-	tab->dash = 0;
+	tab = ft_clean_flags(tab);
 }
 
 void	ft_print_unsigned_hexadecimal_low(t_list *tab)
@@ -102,16 +95,13 @@ void	ft_print_unsigned_hexadecimal_low(t_list *tab)
 	x = va_arg(tab->args, unsigned int);
  	num = ft_low_x_itoa(x);
  	len = ft_strlen(num);
-	if (tab->zero)
-		tab->zero = 0;
-//	if (tab->width > len || tab->prec > len)
-//		ft_check_alignment(tab, len);
+	if (tab->width > len || tab->prec > len)
+		i = ft_check_alignment(tab, len, num);
  	while (num[i])
 		tab->length += write(1, &num[i++], 1);
 	if (tab->width > len && tab->dash)
 		ft_left_alignment(tab, len);
-	tab->width = 0;
-	tab->dash = 0;
+	tab = ft_clean_flags(tab);
 }
 
 void	ft_print_unsigned_hexadecimal_high(t_list *tab)
@@ -125,16 +115,13 @@ void	ft_print_unsigned_hexadecimal_high(t_list *tab)
 	x = va_arg(tab->args, unsigned int);
 	num = ft_high_x_itoa(x);
 	len = ft_strlen(num);
-	if (tab->zero)
-		tab->zero = 0;
-//	if (tab->width > len || tab->prec > len)
-//		ft_check_alignment(tab, len);
+	if (tab->width > len || tab->prec > len)
+		i = ft_check_alignment(tab, len, num);
 	while (num[i])
 		tab->length += write(1, &num[i++], 1);
 	if (tab->width > len && tab->dash)
 		ft_left_alignment(tab, len);
-	tab->width = 0;
-	tab->dash = 0;
+	tab = ft_clean_flags(tab);
 }
 
 void	ft_print_percent(t_list *tab)
@@ -144,6 +131,5 @@ void	ft_print_percent(t_list *tab)
 	tab->length += write(1, "%", 1);
 	if (tab->width > 1 && tab->dash)
 		ft_left_alignment(tab, 1);
-	tab->width = 0;
-	tab->dash = 0;
+	tab = ft_clean_flags(tab);
 }

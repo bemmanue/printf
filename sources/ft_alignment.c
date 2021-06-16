@@ -28,7 +28,7 @@ void	ft_print_null(t_list *tab, int len)
 	}
 }
 
-int	ft_print_space(t_list *tab, int len, char *num)
+void	ft_print_space(t_list *tab, int len)
 {
 	int w;
 	int p;
@@ -40,7 +40,19 @@ int	ft_print_space(t_list *tab, int len, char *num)
 		tab->length += write(1, " ", 1);
 		w--;
 	}
-	return (i);
+}
+
+void	ft_check_alignment_string(t_list *tab, int len)
+{
+	if (tab->width > tab->prec && !(tab->dash))
+	{
+		if (tab->zero)
+			ft_print_zero(tab, len);
+		else
+			ft_print_space(tab, len);
+	}
+	if (tab->prec > len)
+		ft_print_null_again(tab, len);
 }
 
 int	ft_check_alignment(t_list *tab, int len, char *num)
@@ -48,20 +60,20 @@ int	ft_check_alignment(t_list *tab, int len, char *num)
 	int i;
 
 	i = 0;
-	if (num[i] == '-' && tab->width < len)
+	if (num[i] == '-' && tab->prec > len)
+		tab->prec++;
+	if (num[i] == '-' && (tab->width < len || tab->prec > tab->width))
 		tab->length += write(1, &num[i++], 1);
 	if (tab->width > tab->prec && !(tab->dash))
-		i = ft_print_space(tab, len, num);
-	if (num[i] == '-' && tab->width > tab->prec)
+		ft_print_space(tab, len);
+	if (num[i] == '-')
 		tab->length += write(1, &num[i++], 1);
 	if (tab->prec > len)
 		ft_print_null_again(tab, len);
-	if (num[i] == '\n' && tab->prec > len)
-		tab->length += write(1, &num[i++], 1);
 	return (i);
 }
 
-void	ft_add_zero(t_list *tab, int len)
+void	ft_print_zero(t_list *tab, int len)
 {
 	while (tab->width > len)
 	{
