@@ -30,13 +30,15 @@ int ft_eval_precision(t_list *tab, const char *fmt, int i)
 	{
 		p = ft_atoi(&fmt[i]);
 		tab->prec = p;
+		i += ft_count_num(p);
 	}
 	else if (fmt[i] == '*')
 	{
 		p = va_arg(tab->args, int);
 		tab->prec = p;
+		i += ft_count_num(p);
 	}
-	return (++i);
+	return (i);
 }
 
 int	ft_eval_width(t_list *tab, const char *fmt, int i)
@@ -45,18 +47,17 @@ int	ft_eval_width(t_list *tab, const char *fmt, int i)
 
 	w = 0;
 	if (ft_isdigit(fmt[i]))
-	{
 		w = ft_atoi(&fmt[i]);
-		i++;
-	}
 	tab->width = w;
+	i += ft_count_num(w);
 	return (i);
 }
 
 int	ft_eval_dash(t_list *tab, const char *fmt, int i)
 {
 	tab->dash = 1;
-	tab->zero = 0;
+	if (tab->zero == 1)
+		tab->zero = 0;
 	while (fmt[i] == '-')
 		i++;
 	ft_eval_width(tab, fmt, i);

@@ -22,5 +22,7 @@ int		ft_isdigit(int c);
 
 size_t	ft_strlen(const char *str);
 
+int		ft_count_num(int n);
+
 
 #endif

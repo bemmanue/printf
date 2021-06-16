@@ -52,17 +52,23 @@ int	ft_printf(const char *fmt, ...)
 int	main(void)
 {
 	char	c;
-	char	*str;
+	char	*s;
 	int 	d;
 	int		l;
+	int		i;
+	unsigned int u;
+	unsigned int x;
 
 	l = 5;
 	c = 'U';
-	str = "abab";
+	s = "abab";
 	d = 11111;
+	i = -55555;
+	u = 1234567;
+	x = 1234567890;
 
-	printf("%d", ft_printf("%3d", d));
+	printf("%d", ft_printf("%15.10d", i));
 	printf("\n");
-	printf("%d", printf("%3d", d));
+	printf("%d", printf("%15.10d", i));
 	return (0);
 }

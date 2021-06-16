@@ -52,7 +52,7 @@ void	ft_print_unsigned_decimal(t_list *tab);
 
 void	ft_print_percent(t_list *tab);
 
-void	ft_check_alignment(t_list *tab, int len);
+int 	ft_check_alignment(t_list *tab, int len, char *num);
 
 void	ft_right_alignment(t_list *tab, int len);
 
@@ -60,5 +60,10 @@ void	ft_left_alignment(t_list *tab, int len);
 
 void	ft_add_zero(t_list *tab, int len);
 
+void	ft_print_null_again(t_list *tab, int len);
+
+void	ft_print_null(t_list *tab, int len);
+
+void	ft_print_space(t_list *tab, int len);
 
 #endif
