@@ -57,7 +57,7 @@ int	ft_printf(const char *fmt, ...)
 	len += tab->length;
 	return (len);
 }
-make fclean
+
 int	main(void)
 {
 	char	c;
