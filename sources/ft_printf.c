@@ -57,7 +57,7 @@ int	ft_printf(const char *fmt, ...)
 	len += tab->length;
 	return (len);
 }
-make fclean
+
 int	main(void)
 {
 	char	c;
@@ -76,10 +76,10 @@ int	main(void)
 	i = 7;
 	p = "myaushenka";
 	u = 1234567;
-	x = 1234567890;
+	x = 1234156910;
 
-	printf("%d", ft_printf("%*.1s", 25, s));
+	printf("%d", ft_printf("%025d", d));
 	printf("\n");
-	printf("%d", printf("%*.1s", 25, s));
+	printf("%d", printf("%025d", d));
 	return (0);
 }

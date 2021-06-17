@@ -53,7 +53,7 @@ int	ft_align_int(t_list *tab, int len, char *num)
 		tab->length += write(1, &num[i++], 1);
 	if (tab->width > tab->prec && !(tab->dash))
 	{
-		if (tab->zero)
+		if (tab->zero && tab->width && tab->prec < 0)
 			ft_print_null(tab, len);
 		else
 			ft_print_space(tab, len);
