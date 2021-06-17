@@ -16,6 +16,11 @@ int ft_eval_star(t_list *tab, int i)
 	int w;
 
 	w = va_arg(tab->args, int);
+	if (w < 0)
+	{
+		w *= -1;
+		tab->dash = 1;
+	}
 	tab->width = w;
 	return (++i);
 }
@@ -35,8 +40,10 @@ int ft_eval_precision(t_list *tab, const char *fmt, int i)
 	else if (fmt[i] == '*')
 	{
 		p = va_arg(tab->args, int);
+		if (p < 0)
+			p = -1;
 		tab->prec = p;
-		i += ft_count_num(p);
+		i++;
 	}
 	return (i);
 }
