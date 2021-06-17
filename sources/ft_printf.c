@@ -72,14 +72,14 @@ int	main(void)
 	l = 5;
 	c = 'U';
 	s = "myaushenka";
-	d = 1111111;
+	d = 1111;
 	i = 7;
 	p = "myaushenka";
 	u = 1234567;
 	x = 1234156910;
 
-	printf("%d", ft_printf("%025d", d));
+	printf("%d", ft_printf("%0*.*d", 13, 5, d));
 	printf("\n");
-	printf("%d", printf("%025d", d));
+	printf("%d", printf("%0*.*d", 13, 5, d));
 	return (0);
 }
