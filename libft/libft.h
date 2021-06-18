@@ -10,7 +10,7 @@ char	*ft_itoa(int n);
 
 int		ft_atoi(const char *str);
 
-char	*ft_low_x_itoa(unsigned int n);
+char	*ft_low_x_itoa(unsigned long n);
 
 char	*ft_high_x_itoa(unsigned int n);
 
@@ -23,6 +23,8 @@ int		ft_isdigit(int c);
 size_t	ft_strlen(const char *str);
 
 int		ft_count_num(int n);
+
+char	*ft_output_address(char *num);
 
 
 #endif

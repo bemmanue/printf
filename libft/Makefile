@@ -9,7 +9,8 @@ SRCS		=	ft_itoa.c			\
 				ft_isdigit.c		\
 				ft_atoi.c			\
 				ft_strlen.c			\
-				ft_count.c
+				ft_count.c			\
+				ft_output_address.c
 
 OBJS		=	$(SRCS:.c=.o)
 HEAD		=	libft.h

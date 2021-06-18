@@ -74,12 +74,12 @@ int	main(void)
 	s = "myaushenka";
 	d = 1111;
 	i = 7;
-	p = "myaushenka";
+	p = "hello";
 	u = 1234567;
 	x = 1234156910;
 
-	printf("%d", ft_printf("%0*.*d", 13, 5, d));
+	printf("%d", ft_printf("%-34p", p));
 	printf("\n");
-	printf("%d", printf("%0*.*d", 13, 5, d));
+	printf("%d", printf("%-34p", p));
 	return (0);
 }

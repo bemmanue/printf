@@ -1,7 +1,7 @@
 
 #include "libft.h"
 
-static char	*ft_convertion(char *str, unsigned int n, int i)
+static char	*ft_convertion(char *str, unsigned long n, int i)
 {
 	str[i--] = '\0';
 	while (i >= 0)
@@ -16,7 +16,7 @@ static char	*ft_convertion(char *str, unsigned int n, int i)
 	return (str);
 }
 
-static int	ft_count(unsigned int n)
+static int	ft_count(unsigned long n)
 {
 	int	i;
 
@@ -31,7 +31,7 @@ static int	ft_count(unsigned int n)
 	return (i);
 }
 
-char	*ft_low_x_itoa(unsigned int n)
+char	*ft_low_x_itoa(unsigned long n)
 {
 	char	*str;
 

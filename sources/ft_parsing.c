@@ -8,8 +8,8 @@ int	ft_type_parsing(t_list *tab, const char *fmt, int i)
 		ft_print_char(tab);
 	else if (fmt[i] == 's')
 		ft_print_string(tab);
-/*	else if (fmt[i] == 'p')
-		ft_print_pointer(tab); */
+	else if (fmt[i] == 'p')
+		ft_print_pointer(tab);
 	else if (fmt[i] == 'd' || fmt[i] == 'i')
 		ft_print_integer(tab);
 	else if (fmt[i] == 'u')
