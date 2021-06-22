@@ -31,6 +31,8 @@ int ft_eval_precision(t_list *tab, const char *fmt, int i)
 
 	tab->prec = 0;
 	i++;
+	while (fmt[i] == '0')
+		i++;
 	if (ft_isdigit(fmt[i]))
 	{
 		p = ft_atoi(&fmt[i]);

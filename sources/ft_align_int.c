@@ -51,6 +51,8 @@ int	ft_align_int(t_list *tab, int len, char *num)
 		tab->prec++;
 	if (num[i] == '-' && (tab->width < len || tab->prec > tab->width))
 		tab->length += write(1, &num[i++], 1);
+	else if (num[i] == '-' && (tab->zero && (tab->prec > tab->width || tab->prec < 0)))
+		tab->length += write(1, &num[i++], 1);
 	if (tab->width > tab->prec && !(tab->dash))
 	{
 		if (tab->zero && tab->width && tab->prec < 0)

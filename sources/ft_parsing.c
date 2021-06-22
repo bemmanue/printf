@@ -2,6 +2,16 @@
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
 
+int ft_eval_space(t_list *tab, int i)
+{
+	if (!tab->space)
+	{
+		tab->space = 1;
+		tab->length += write(1, " ", 1);
+	}
+	return (++i);
+}
+
 int	ft_type_parsing(t_list *tab, const char *fmt, int i)
 {
 	if (fmt[i] == 'c')
@@ -27,6 +37,8 @@ int	ft_parsing(t_list *tab, const char *fmt, int i)
 {
 	while (!(ft_isalpha(fmt[i]) || fmt[i] == '%'))
 	{
+		if (fmt[i] == ' ')
+			i = ft_eval_space(tab, i);
 		if (fmt[i] == '-')
 			i = ft_eval_dash(tab, fmt, i);
 		if (fmt[i] == '0')

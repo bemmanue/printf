@@ -15,6 +15,7 @@
 
 t_list *ft_clean_flags(t_list *tab)
 {
+	tab->space = 0;
 	tab->dash = 0;
 	tab->zero = 0;
 	tab->width = 0;
@@ -24,6 +25,7 @@ t_list *ft_clean_flags(t_list *tab)
 
 t_list	*ft_init(t_list *tab)
 {
+	tab->space = 0;
 	tab->dash = 0;
 	tab->zero = 0;
 	tab->width = 0;
@@ -57,7 +59,7 @@ int	ft_printf(const char *fmt, ...)
 	len += tab->length;
 	return (len);
 }
-
+/*
 int	main(void)
 {
 	char	c;
@@ -73,13 +75,13 @@ int	main(void)
 	c = 'U';
 	s = "myaushenka";
 	d = 1111;
-	i = 7;
+	i = 2;
 	p = "hello";
 	u = 1234567;
 	x = 1234156910;
 
-	printf("%d", ft_printf("%-34p", p));
+	printf("%d", ft_printf("%.000009s", "hello"));
 	printf("\n");
-	printf("%d", printf("%-34p", p));
+	printf("%d", printf("%.00009s", "hello"));
 	return (0);
-}
+}*/
