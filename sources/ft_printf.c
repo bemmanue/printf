@@ -63,8 +63,26 @@ int	ft_printf(const char *fmt, ...)
 /*
 int	main(void)
 {
-	printf("%d", ft_printf("%.000009s", "hello"));
+	char	c;
+	char	*s;
+	int 	d;
+	int		l;
+	int		i;
+	char	*p;
+	unsigned int u;
+	unsigned int x;
+
+	l = 5;
+	c = 'U';
+	s = "5";
+	d = -12345;
+	i = 2;
+	p = "hello";
+	u = 1234567;
+	x = 5;
+
+//	printf("%d", ft_printf("%-c", 1));
 	printf("\n");
-	printf("%d", printf("%.00009s", "hello"));
+	printf("%d", printf("%-c", 133));
 	return (0);
 }*/

@@ -13,6 +13,7 @@ static char	*ft_convertion(char *str, unsigned int n, int i)
 		n /= 16;
 		i--;
 	}
+	free(str);
 	return (str);
 }
 
@@ -37,6 +38,9 @@ char	*ft_high_x_itoa(unsigned int n)
 
 	str = malloc(sizeof(*str) * ft_count(n) + 1);
 	if (str == NULL)
+	{
+		free(str);
 		return (NULL);
+	}
 	return (ft_convertion(str, n, ft_count(n)));
 }

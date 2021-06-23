@@ -15,7 +15,7 @@ void	ft_print_string(t_list *tab)
 	if (!s)
 		s = "(null)";
 	len = ft_strlen(s);
-	if (((tab->width > tab->prec && tab->prec >= 0) || tab->width > len) && !tab->dash && s)
+	if (((tab->width > tab->prec && tab->prec >= 0) || tab->width > len) && !tab->dash)
 		ft_align_char(tab, len);
 	if (p < 0)
 		while (s[i])
@@ -23,7 +23,7 @@ void	ft_print_string(t_list *tab)
 	else
 		while (s[i] && p--)
 			tab->length += write(1, &s[i++], 1);
-	if ((tab->width > len || (tab->width > tab->prec && tab->prec >= 0)) && tab->dash && s)
+	if ((tab->width > len || (tab->width > tab->prec && tab->prec >= 0)) && tab->dash)
 		ft_complete_char(tab, len);
 }
 

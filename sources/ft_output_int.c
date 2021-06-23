@@ -7,18 +7,17 @@ void	ft_print_pointer(t_list *tab)
 	int				i;
 	unsigned long	p;
 	char			*num;
-	char			*index;
 	int				len;
 
 	i = 0;
 	p = va_arg(tab->args, unsigned long);
  	num = ft_low_x_itoa(p);
- 	index = ft_output_address(num);
-	len = ft_strlen(index);
+	len = ft_strlen(num) + 2;
 	if (tab->width > len || tab->prec > len)
-		i = ft_align_int(tab, len, index);
-	while (index[i])
-		tab->length += write(1, &index[i++], 1);
+		i = ft_align_int(tab, len, num);
+	tab->length += write(1, "0x", 2);
+	while (num[i])
+		tab->length += write(1, &num[i++], 1);
 	if ((tab->width > len || tab->prec > len) && tab->dash)
 		ft_complete_int(tab, len);
 }
@@ -39,7 +38,7 @@ void	ft_print_integer(t_list *tab)
 	else
 		num = ft_itoa(d);
 	len = ft_strlen(num);
-	if (tab->width > len || tab->prec > len || tab->zero)
+	if (tab->width > len || tab->prec >= len || tab->zero)
 		i = ft_align_int(tab, len, num);
 	while (num[i])
 		tab->length += write(1, &num[i++], 1);
