@@ -81,8 +81,8 @@ int	main(void)
 	u = 1234567;
 	x = 5;
 
-//	printf("%d", ft_printf("%-c", 1));
+	printf("%d", ft_printf("%-c", 1));
 	printf("\n");
-	printf("%d", printf("%-c", 133));
+	printf("%d", printf("%-c", 1));
 	return (0);
 }*/

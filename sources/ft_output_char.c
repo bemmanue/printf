@@ -37,7 +37,7 @@ void	ft_print_char(t_list *tab)
 	if (tab->width && !tab->dash)
 		ft_align_char(tab, len);
 	tab->length += write(1, &c, 1);
-	if (tab->dash)
+	if (tab->width && tab->dash)
 		ft_complete_char(tab, len);
 }
 
@@ -49,6 +49,6 @@ void	ft_print_percent(t_list *tab)
 	if (tab->width && !tab->dash)
 		ft_align_char(tab, len);
 	tab->length += write(1, "%", 1);
-	if (tab->dash)
+	if (tab->width && tab->dash)
 		ft_complete_char(tab, len);
 }
