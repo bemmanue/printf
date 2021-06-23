@@ -51,5 +51,6 @@ int	ft_parsing(t_list *tab, const char *fmt, int i)
 			i = ft_eval_width(tab, fmt, i);
 	}
 	i = ft_type_parsing(tab, fmt, i);
+	tab = ft_clean_flags(tab);
 	return (i);
 }

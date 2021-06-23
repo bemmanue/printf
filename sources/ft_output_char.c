@@ -16,7 +16,7 @@ void	ft_print_string(t_list *tab)
 		s = "(null)";
 	len = ft_strlen(s);
 	if (((tab->width > tab->prec && tab->prec >= 0) || tab->width > len) && !tab->dash && s)
-		ft_align_string(tab, len);
+		ft_align_char(tab, len);
 	if (p < 0)
 		while (s[i])
 			tab->length += write(1, &s[i++], 1);
@@ -24,8 +24,7 @@ void	ft_print_string(t_list *tab)
 		while (s[i] && p--)
 			tab->length += write(1, &s[i++], 1);
 	if ((tab->width > len || (tab->width > tab->prec && tab->prec >= 0)) && tab->dash && s)
-		ft_complete_string(tab, len);
-	tab = ft_clean_flags(tab);
+		ft_complete_char(tab, len);
 }
 
 void	ft_print_char(t_list *tab)
@@ -40,7 +39,6 @@ void	ft_print_char(t_list *tab)
 	tab->length += write(1, &c, 1);
 	if (tab->dash)
 		ft_complete_char(tab, len);
-	tab = ft_clean_flags(tab);
 }
 
 void	ft_print_percent(t_list *tab)
@@ -53,5 +51,4 @@ void	ft_print_percent(t_list *tab)
 	tab->length += write(1, "%", 1);
 	if (tab->dash)
 		ft_complete_char(tab, len);
-	tab = ft_clean_flags(tab);
 }

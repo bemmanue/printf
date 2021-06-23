@@ -57,29 +57,12 @@ int	ft_printf(const char *fmt, ...)
 	}
 	va_end(tab->args);
 	len += tab->length;
+	free(tab);
 	return (len);
 }
 /*
 int	main(void)
 {
-	char	c;
-	char	*s;
-	int 	d;
-	int		l;
-	int		i;
-	char	*p;
-	unsigned int u;
-	unsigned int x;
-
-	l = 5;
-	c = 'U';
-	s = "myaushenka";
-	d = 1111;
-	i = 2;
-	p = "hello";
-	u = 1234567;
-	x = 1234156910;
-
 	printf("%d", ft_printf("%.000009s", "hello"));
 	printf("\n");
 	printf("%d", printf("%.00009s", "hello"));

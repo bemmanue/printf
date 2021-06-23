@@ -59,13 +59,9 @@ int 	ft_align_int(t_list *tab, int len, char *num);
 
 void	ft_align_char(t_list *tab, int len);
 
-void	ft_align_string(t_list *tab, int len);
-
 void	ft_complete_int(t_list *tab, int len);
 
 void	ft_complete_char(t_list *tab, int len);
-
-void	ft_complete_string(t_list *tab, int len);
 
 void	ft_print_null(t_list *tab, int len);
 
