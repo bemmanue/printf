@@ -60,3 +60,16 @@ int	ft_printf(const char *fmt, ...)
 	free(tab);
 	return (len);
 }
+/*
+int main(void)
+{
+	char c;
+	char *s;
+	c = 'a';
+	s = "hello";
+
+	printf("%d", ft_printf("%-16p", NULL));
+	printf("\n");
+	printf("%d", printf("%-16p", NULL));
+	return (0);
+}*/

@@ -23,11 +23,16 @@ void	ft_print_pointer(t_list *tab)
 	i = 0;
 	p = va_arg(tab->args, unsigned long);
 	num = ft_low_x_itoa(p);
-	len = ft_strlen(num) + 2;
+	if (p)
+		len = ft_strlen(num) + 2;
+	else
+		len = 2;
+	if (tab->prec < 0 && len == 2)
+		len++;
 	if (tab->width > len || tab->prec > len)
 		i = ft_align_int(tab, len, num);
 	tab->length += write(1, "0x", 2);
-	while (num[i])
+	while ((p || tab->prec < 0) && num[i])
 		tab->length += write(1, &num[i++], 1);
 	if ((tab->width > len || tab->prec > len) && tab->dash)
 		ft_complete_int(tab, len);
