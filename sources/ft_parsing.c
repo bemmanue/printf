@@ -1,6 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parsing.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bemmanue <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/25 10:44:41 by bemmanue          #+#    #+#             */
+/*   Updated: 2021/06/25 10:44:45 by bemmanue         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
+
+int	ft_eval_space(t_list *tab, int i)
+{
+	if (!tab->space)
+	{
+		tab->space = 1;
+		tab->length += write(1, " ", 1);
+	}
+	return (++i);
+}
 
 int	ft_type_parsing(t_list *tab, const char *fmt, int i)
 {
@@ -27,6 +48,8 @@ int	ft_parsing(t_list *tab, const char *fmt, int i)
 {
 	while (!(ft_isalpha(fmt[i]) || fmt[i] == '%'))
 	{
+		if (fmt[i] == ' ')
+			i = ft_eval_space(tab, i);
 		if (fmt[i] == '-')
 			i = ft_eval_dash(tab, fmt, i);
 		if (fmt[i] == '0')
@@ -39,5 +62,6 @@ int	ft_parsing(t_list *tab, const char *fmt, int i)
 			i = ft_eval_width(tab, fmt, i);
 	}
 	i = ft_type_parsing(tab, fmt, i);
+	tab = ft_clean_flags(tab);
 	return (i);
 }

@@ -1,3 +1,14 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: bemmanue <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/06/25 10:40:12 by bemmanue          #+#    #+#              #
+#    Updated: 2021/06/25 10:40:17 by bemmanue         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME		=	libft.a
 
@@ -9,8 +20,7 @@ SRCS		=	ft_itoa.c			\
 				ft_isdigit.c		\
 				ft_atoi.c			\
 				ft_strlen.c			\
-				ft_count.c			\
-				ft_output_address.c
+				ft_count.c
 
 OBJS		=	$(SRCS:.c=.o)
 HEAD		=	libft.h

@@ -5,16 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bemmanue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/03 13:25:38 by bemmanue          #+#    #+#             */
-/*   Updated: 2021/06/03 13:25:41 by bemmanue         ###   ########.fr       */
+/*   Created: 2021/06/25 10:45:06 by bemmanue          #+#    #+#             */
+/*   Updated: 2021/06/25 10:45:11 by bemmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
 
-t_list *ft_clean_flags(t_list *tab)
+t_list	*ft_clean_flags(t_list *tab)
 {
+	tab->space = 0;
 	tab->dash = 0;
 	tab->zero = 0;
 	tab->width = 0;
@@ -24,6 +25,7 @@ t_list *ft_clean_flags(t_list *tab)
 
 t_list	*ft_init(t_list *tab)
 {
+	tab->space = 0;
 	tab->dash = 0;
 	tab->zero = 0;
 	tab->width = 0;
@@ -35,7 +37,7 @@ t_list	*ft_init(t_list *tab)
 int	ft_printf(const char *fmt, ...)
 {
 	int		i;
-	int 	len;
+	int		len;
 	t_list	*tab;
 
 	i = 0;
@@ -45,7 +47,7 @@ int	ft_printf(const char *fmt, ...)
 		return (-1);
 	tab = ft_init(tab);
 	va_start(tab->args, fmt);
-	while(fmt[i])
+	while (fmt[i])
 	{
 		if (fmt[i] == '%')
 			i = ft_parsing(tab, fmt, ++i);
@@ -55,31 +57,6 @@ int	ft_printf(const char *fmt, ...)
 	}
 	va_end(tab->args);
 	len += tab->length;
+	free(tab);
 	return (len);
-}
-
-int	main(void)
-{
-	char	c;
-	char	*s;
-	int 	d;
-	int		l;
-	int		i;
-	char	*p;
-	unsigned int u;
-	unsigned int x;
-
-	l = 5;
-	c = 'U';
-	s = "myaushenka";
-	d = 1111;
-	i = 7;
-	p = "hello";
-	u = 1234567;
-	x = 1234156910;
-
-	printf("%d", ft_printf("%-34p", p));
-	printf("\n");
-	printf("%d", printf("%-34p", p));
-	return (0);
 }

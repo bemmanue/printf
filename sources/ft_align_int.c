@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_align_int.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bemmanue <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/25 10:43:40 by bemmanue          #+#    #+#             */
+/*   Updated: 2021/06/25 10:43:44 by bemmanue         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
 
 void	ft_print_null_again(t_list *tab, int len)
 {
-	int p;
+	int	p;
 
 	p = tab->prec;
 	while (p > len)
@@ -16,8 +27,8 @@ void	ft_print_null_again(t_list *tab, int len)
 
 void	ft_print_null(t_list *tab, int len)
 {
-	int w;
-	int p;
+	int	w;
+	int	p;
 
 	w = tab->width;
 	p = tab->prec;
@@ -30,8 +41,8 @@ void	ft_print_null(t_list *tab, int len)
 
 void	ft_print_space(t_list *tab, int len)
 {
-	int w;
-	int p;
+	int	w;
+	int	p;
 
 	w = tab->width;
 	p = tab->prec;
@@ -44,13 +55,18 @@ void	ft_print_space(t_list *tab, int len)
 
 int	ft_align_int(t_list *tab, int len, char *num)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	if (num[i] == '-' && tab->prec > len)
-		tab->prec++;
-	if (num[i] == '-' && (tab->width < len || tab->prec > tab->width))
-		tab->length += write(1, &num[i++], 1);
+	if (num[i] == '-')
+	{
+		if (tab->prec >= len)
+			tab->prec++;
+		if (tab->width < len || tab->prec > tab->width)
+			tab->length += write(1, &num[i++], 1);
+		else if (tab->zero && (tab->prec > tab->width || tab->prec < 0))
+			tab->length += write(1, &num[i++], 1);
+	}
 	if (tab->width > tab->prec && !(tab->dash))
 	{
 		if (tab->zero && tab->width && tab->prec < 0)
@@ -67,8 +83,8 @@ int	ft_align_int(t_list *tab, int len, char *num)
 
 void	ft_complete_int(t_list *tab, int len)
 {
-	int w;
-	int p;
+	int	w;
+	int	p;
 
 	w = tab->width;
 	p = tab->prec;

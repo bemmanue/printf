@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_unsigned_itoa.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bemmanue <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/25 10:42:49 by bemmanue          #+#    #+#             */
+/*   Updated: 2021/06/25 10:42:53 by bemmanue         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
@@ -11,6 +22,7 @@ static char	*ft_convertion(char *str, unsigned int n, int i)
 		n /= 10;
 		i--;
 	}
+	free(str);
 	return (str);
 }
 
@@ -35,6 +47,9 @@ char	*ft_unsigned_itoa(unsigned int n)
 
 	str = malloc(sizeof(*str) * ft_count(n) + 1);
 	if (str == NULL)
+	{
+		free(str);
 		return (NULL);
+	}
 	return (ft_convertion(str, n, ft_count(n)));
 }

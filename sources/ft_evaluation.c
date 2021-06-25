@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_evaluation.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bemmanue <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/25 10:43:59 by bemmanue          #+#    #+#             */
+/*   Updated: 2021/06/25 10:44:04 by bemmanue         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
 
-int ft_eval_zero(t_list *tab, int i)
+int	ft_eval_zero(t_list *tab, int i)
 {
 	if (tab->dash == 1)
 		tab->zero = 0;
@@ -11,9 +22,9 @@ int ft_eval_zero(t_list *tab, int i)
 	return (++i);
 }
 
-int ft_eval_star(t_list *tab, int i)
+int	ft_eval_star(t_list *tab, int i)
 {
-	int w;
+	int	w;
 
 	w = va_arg(tab->args, int);
 	if (w < 0)
@@ -25,12 +36,14 @@ int ft_eval_star(t_list *tab, int i)
 	return (++i);
 }
 
-int ft_eval_precision(t_list *tab, const char *fmt, int i)
+int	ft_eval_precision(t_list *tab, const char *fmt, int i)
 {
-	int p;
+	int	p;
 
 	tab->prec = 0;
 	i++;
+	while (fmt[i] == '0')
+		i++;
 	if (ft_isdigit(fmt[i]))
 	{
 		p = ft_atoi(&fmt[i]);

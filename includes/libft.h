@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bemmanue <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/25 10:39:45 by bemmanue          #+#    #+#             */
+/*   Updated: 2021/06/25 10:39:53 by bemmanue         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
@@ -23,8 +34,6 @@ int		ft_isdigit(int c);
 size_t	ft_strlen(const char *str);
 
 int		ft_count_num(int n);
-
-char	*ft_output_address(char *num);
 
 
 #endif

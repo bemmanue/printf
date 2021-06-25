@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_low_x_itoa.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bemmanue <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/25 10:42:06 by bemmanue          #+#    #+#             */
+/*   Updated: 2021/06/25 10:42:11 by bemmanue         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
@@ -13,6 +24,7 @@ static char	*ft_convertion(char *str, unsigned long n, int i)
 		n /= 16;
 		i--;
 	}
+	free(str);
 	return (str);
 }
 
@@ -37,6 +49,9 @@ char	*ft_low_x_itoa(unsigned long n)
 
 	str = malloc(sizeof(*str) * ft_count(n) + 1);
 	if (str == NULL)
+	{
+		free(str);
 		return (NULL);
+	}
 	return (ft_convertion(str, n, ft_count(n)));
 }
