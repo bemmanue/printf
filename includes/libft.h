@@ -36,4 +36,8 @@ size_t	ft_strlen(const char *str);
 int		ft_count_num(int n);
 
 
+<<<<<<< HEAD
 #endif
+=======
+#endif
+>>>>>>> 860a69c9a28126a2ef24d40061610c874e4ef926

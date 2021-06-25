@@ -21,7 +21,7 @@ void	ft_align_char(t_list *tab, int len)
 
 	w = tab->width;
 	p = tab->prec;
-	if ((tab->width > tab->prec && tab->prec >= 0) || tab->width > len)
+	if ((w > p && p >= 0) || w > len)
 	{
 		if (p > len || p < 0)
 			i = w - len;
@@ -44,7 +44,7 @@ void	ft_complete_char(t_list *tab, int len)
 
 	w = tab->width;
 	p = tab->prec;
-	if (tab->width > len || (tab->width > tab->prec && tab->prec >= 0))
+	if (w > len || (w > p && p >= 0))
 	{
 		if (len > p && p >= 0)
 			i = w - p;
