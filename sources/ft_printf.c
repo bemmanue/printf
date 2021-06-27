@@ -13,25 +13,23 @@
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
 
-t_list	*ft_clean_flags(t_list *tab)
+void	ft_clean_flags(t_list **tab)
 {
-	tab->space = 0;
-	tab->dash = 0;
-	tab->zero = 0;
-	tab->width = 0;
-	tab->prec = -1;
-	return (tab);
+	(*tab)->space = 0;
+	(*tab)->dash = 0;
+	(*tab)->zero = 0;
+	(*tab)->width = 0;
+	(*tab)->prec = -1;
 }
 
-t_list	*ft_init(t_list *tab)
+void	ft_init(t_list **tab)
 {
-	tab->space = 0;
-	tab->dash = 0;
-	tab->zero = 0;
-	tab->width = 0;
-	tab->prec = -1;
-	tab->length = 0;
-	return (tab);
+	(*tab)->space = 0;
+	(*tab)->dash = 0;
+	(*tab)->zero = 0;
+	(*tab)->width = 0;
+	(*tab)->prec = -1;
+	(*tab)->length = 0;
 }
 
 int	ft_printf(const char *fmt, ...)
@@ -45,12 +43,20 @@ int	ft_printf(const char *fmt, ...)
 	tab = (t_list *)malloc(sizeof(t_list));
 	if (!tab)
 		return (-1);
-	tab = ft_init(tab);
+	ft_init(&tab);
 	va_start(tab->args, fmt);
 	while (fmt[i])
 	{
 		if (fmt[i] == '%')
+		{
 			i = ft_parsing(tab, fmt, ++i);
+			if (i < 0)
+			{
+				free(tab);
+				va_end(tab->args);
+				return (-1);
+			}
+		}
 		else
 			len += write(1, &fmt[i], 1);
 		i++;
@@ -65,11 +71,14 @@ int main(void)
 {
 	char c;
 	char *s;
+	int d;
+
+	d = 1024;
 	c = 'a';
 	s = "hello";
 
-	printf("%d", ft_printf("%-16p", NULL));
+	printf("%d", ft_printf("%13x", 0x67535));
 	printf("\n");
-	printf("%d", printf("%-16p", NULL));
+	printf("%d", printf("%13x", 0x67535));
 	return (0);
 }*/

@@ -13,7 +13,7 @@
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
 
-void	ft_print_pointer(t_list *tab)
+int	ft_print_pointer(t_list *tab)
 {
 	int				i;
 	int				len;
@@ -23,6 +23,8 @@ void	ft_print_pointer(t_list *tab)
 	i = 0;
 	p = va_arg(tab->args, unsigned long);
 	num = ft_low_x_itoa(p);
+	if (num == NULL)
+		return (-1);
 	if (p)
 		len = ft_strlen(num) + 2;
 	else
@@ -34,11 +36,13 @@ void	ft_print_pointer(t_list *tab)
 	tab->length += write(1, "0x", 2);
 	while ((p || tab->prec < 0) && num[i])
 		tab->length += write(1, &num[i++], 1);
+	free(num);
 	if ((tab->width > len || tab->prec > len) && tab->dash)
 		ft_complete_int(tab, len);
+	return (0);
 }
 
-void	ft_print_integer(t_list *tab)
+int	ft_print_integer(t_list *tab)
 {
 	int		i;
 	int		d;
@@ -48,21 +52,25 @@ void	ft_print_integer(t_list *tab)
 	i = 0;
 	d = va_arg(tab->args, int);
 	if (!d && !tab->prec && !tab->width)
-		num = "";
+		num = ft_strdup("");
 	else if (!d && !tab->prec)
-		num = " ";
+		num = ft_strdup(" ");
 	else
 		num = ft_itoa(d);
+	if (num == NULL)
+		return (-1);
 	len = ft_strlen(num);
 	if (tab->width > len || tab->prec >= len || tab->zero)
 		i = ft_align_int(tab, len, num);
 	while (num[i])
 		tab->length += write(1, &num[i++], 1);
+	free(num);
 	if ((tab->width > len || tab->prec > len) && tab->dash)
 		ft_complete_int(tab, len);
+	return (0);
 }
 
-void	ft_print_unsigned_decimal(t_list *tab)
+int	ft_print_unsigned_decimal(t_list *tab)
 {
 	unsigned int	u;
 	int				i;
@@ -72,21 +80,25 @@ void	ft_print_unsigned_decimal(t_list *tab)
 	i = 0;
 	u = va_arg(tab->args, unsigned int);
 	if (!u && !tab->prec && !tab->width)
-		num = "";
+		num = ft_strdup("");
 	else if (!u && !tab->prec)
-		num = " ";
+		num = ft_strdup(" ");
 	else
 		num = ft_unsigned_itoa(u);
+	if (num == NULL)
+		return (-1);
 	len = ft_strlen(num);
 	if (tab->width > len || tab->prec > len)
 		i = ft_align_int(tab, len, num);
 	while (num[i])
 		tab->length += write(1, &num[i++], 1);
+	free(num);
 	if (tab->width > len && tab->dash)
 		ft_complete_int(tab, len);
+	return (0);
 }
 
-void	ft_print_unsigned_hexadecimal_low(t_list *tab)
+int	ft_print_unsigned_hexadecimal_low(t_list *tab)
 {
 	int				i;
 	int				len;
@@ -96,21 +108,25 @@ void	ft_print_unsigned_hexadecimal_low(t_list *tab)
 	i = 0;
 	x = va_arg(tab->args, unsigned int);
 	if (!x && !tab->prec && !tab->width)
-		num = "";
+		num = ft_strdup("");
 	else if (!x && !tab->prec)
-		num = " ";
+		num = ft_strdup(" ");
 	else
 		num = ft_low_x_itoa(x);
+	if (num == NULL)
+		return (-1);
 	len = ft_strlen(num);
 	if (tab->width > len || tab->prec > len)
 		i = ft_align_int(tab, len, num);
 	while (num[i])
 		tab->length += write(1, &num[i++], 1);
+	free(num);
 	if (tab->width > len && tab->dash)
 		ft_complete_int(tab, len);
+	return (0);
 }
 
-void	ft_print_unsigned_hexadecimal_high(t_list *tab)
+int	ft_print_unsigned_hexadecimal_high(t_list *tab)
 {
 	int				i;
 	int				len;
@@ -120,16 +136,20 @@ void	ft_print_unsigned_hexadecimal_high(t_list *tab)
 	i = 0;
 	x = va_arg(tab->args, unsigned int);
 	if (!x && !tab->prec && !tab->width)
-		num = "";
+		num = ft_strdup("");
 	else if (!x && !tab->prec)
-		num = " ";
+		num = ft_strdup(" ");
 	else
 		num = ft_high_x_itoa(x);
+	if (num == NULL)
+		return (-1);
 	len = ft_strlen(num);
 	if (tab->width > len || tab->prec > len)
 		i = ft_align_int(tab, len, num);
 	while (num[i])
 		tab->length += write(1, &num[i++], 1);
+	free(num);
 	if (tab->width > len && tab->dash)
 		ft_complete_int(tab, len);
+	return (0);
 }

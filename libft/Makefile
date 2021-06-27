@@ -12,15 +12,17 @@
 
 NAME		=	libft.a
 
-SRCS		=	ft_itoa.c			\
+SRCS		=	ft_atoi.c			\
+				ft_count_num.c		\
 				ft_high_x_itoa.c	\
-				ft_low_x_itoa.c		\
-				ft_unsigned_itoa.c	\
 				ft_isalpha.c		\
 				ft_isdigit.c		\
-				ft_atoi.c			\
+				ft_itoa.c			\
+				ft_low_x_itoa.c		\
+				ft_memcpy.c			\
+				ft_strdup.c			\
 				ft_strlen.c			\
-				ft_count.c
+				ft_unsigned_itoa.c
 
 OBJS		=	$(SRCS:.c=.o)
 HEAD		=	libft.h

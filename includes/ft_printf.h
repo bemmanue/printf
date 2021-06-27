@@ -32,9 +32,9 @@ typedef struct		s_list
 
 int		ft_printf(const char *fmt, ...);
 
-t_list	*ft_init(t_list *tab);
+void	ft_init(t_list **tab);
 
-t_list	*ft_clean_flags(t_list *tab);
+void	ft_clean_flags(t_list **tab);
 
 int 	ft_parsing(t_list *tab, const char *fmt, int i);
 
@@ -54,15 +54,15 @@ void	ft_print_char(t_list *tab);
 
 void	ft_print_string(t_list *tab);
 
-void	ft_print_pointer(t_list *tab);
+int 	ft_print_pointer(t_list *tab);
 
-void	ft_print_integer(t_list *tab);
+int 	ft_print_integer(t_list *tab);
 
-void	ft_print_unsigned_hexadecimal_low(t_list *tab);
+int 	ft_print_unsigned_hexadecimal_low(t_list *tab);
 
-void	ft_print_unsigned_hexadecimal_high(t_list *tab);
+int 	ft_print_unsigned_hexadecimal_high(t_list *tab);
 
-void	ft_print_unsigned_decimal(t_list *tab);
+int 	ft_print_unsigned_decimal(t_list *tab);
 
 void	ft_print_percent(t_list *tab);
 
