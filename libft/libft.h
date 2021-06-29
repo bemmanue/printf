@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bemmanue <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/29 13:43:06 by bemmanue          #+#    #+#             */
+/*   Updated: 2021/06/29 13:43:13 by bemmanue         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdlib.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdlib.h>
 
 int		ft_atoi(const char *str);
 

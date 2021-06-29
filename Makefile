@@ -12,13 +12,14 @@
 
 NAME			=	libftprintf.a
 
-SRCS			=	./sources/ft_printf.c		\
-					./sources/ft_parsing.c		\
-					./sources/ft_output_int.c	\
-					./sources/ft_output_char.c	\
-					./sources/ft_evaluation.c	\
+SRCS			=	./sources/ft_align_char.c	\
 					./sources/ft_align_int.c	\
-					./sources/ft_align_char.c
+					./sources/ft_evaluation.c	\
+					./sources/ft_init_flags.c	\
+					./sources/ft_print_char.c	\
+					./sources/ft_print_int.c	\
+					./sources/ft_parsing.c		\
+					./sources/ft_printf.c
 
 LIBFT			=	./libft/libft.a
 LIBFT_PATH		=	libft/

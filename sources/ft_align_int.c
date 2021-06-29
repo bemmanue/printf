@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../libft/libft.h"
 
-void	ft_print_null_again(t_list *tab, int len)
+static void	ft_print_null_again(t_list *tab, int len)
 {
 	int	p;
 
@@ -25,7 +24,7 @@ void	ft_print_null_again(t_list *tab, int len)
 	}
 }
 
-void	ft_print_null(t_list *tab, int len)
+static void	ft_print_null(t_list *tab, int len)
 {
 	int	w;
 	int	p;
@@ -39,7 +38,7 @@ void	ft_print_null(t_list *tab, int len)
 	}
 }
 
-void	ft_print_space(t_list *tab, int len)
+static void	ft_print_space(t_list *tab, int len)
 {
 	int	w;
 	int	p;

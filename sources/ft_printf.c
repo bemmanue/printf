@@ -11,74 +11,46 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../libft/libft.h"
 
-void	ft_clean_flags(t_list **tab)
+static int	ft_passing(const char *fmt, t_list *tab, int *len)
 {
-	(*tab)->space = 0;
-	(*tab)->dash = 0;
-	(*tab)->zero = 0;
-	(*tab)->width = 0;
-	(*tab)->prec = -1;
-}
-
-void	ft_init(t_list **tab)
-{
-	(*tab)->space = 0;
-	(*tab)->dash = 0;
-	(*tab)->zero = 0;
-	(*tab)->width = 0;
-	(*tab)->prec = -1;
-	(*tab)->length = 0;
-}
-
-int	ft_printf(const char *fmt, ...)
-{
-	int		i;
-	int		len;
-	t_list	*tab;
+	int	i;
 
 	i = 0;
-	len = 0;
-	tab = (t_list *)malloc(sizeof(t_list));
-	if (!tab)
-		return (-1);
-	ft_init(&tab);
-	va_start(tab->args, fmt);
 	while (fmt[i])
 	{
 		if (fmt[i] == '%')
 		{
 			i = ft_parsing(tab, fmt, ++i);
 			if (i < 0)
-			{
-				free(tab);
-				va_end(tab->args);
 				return (-1);
-			}
 		}
 		else
-			len += write(1, &fmt[i], 1);
+			*len += write(1, &fmt[i], 1);
 		i++;
+	}
+	return (i);
+}
+
+int	ft_printf(const char *fmt, ...)
+{
+	int		len;
+	t_list	*tab;
+
+	len = 0;
+	tab = (t_list *)malloc(sizeof(t_list));
+	if (!tab)
+		return (-1);
+	ft_init_flags(&tab);
+	va_start(tab->args, fmt);
+	if (ft_passing(fmt, tab, &len) < 0)
+	{
+		free(tab);
+		va_end(tab->args);
+		return (-1);
 	}
 	va_end(tab->args);
 	len += tab->length;
 	free(tab);
 	return (len);
 }
-/*
-int main(void)
-{
-	char c;
-	char *s;
-	int d;
-
-	d = 1024;
-	c = 'a';
-	s = "hello";
-
-	printf("%d", ft_printf("%13x", 0x67535));
-	printf("\n");
-	printf("%d", printf("%13x", 0x67535));
-	return (0);
-}*/

@@ -13,32 +13,30 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include <stdarg.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include "libft.h"
+# include <stdarg.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include "../libft/libft.h"
 
-typedef struct		s_list
+typedef struct s_list
 {
-	va_list			args;
-	int				space;
-	int				dash;
-	int				zero;
-	int				width;
-	int				prec;
-	int				length;
-}					t_list;
+	va_list		args;
+	int			space;
+	int			dash;
+	int			zero;
+	int			width;
+	int			prec;
+	int			length;
+}				t_list;
 
 int		ft_printf(const char *fmt, ...);
 
-void	ft_init(t_list **tab);
+void	ft_init_flags(t_list **tab);
 
 void	ft_clean_flags(t_list **tab);
 
-int 	ft_parsing(t_list *tab, const char *fmt, int i);
-
-int		ft_type_parsing(t_list *tab, const char *fmt, int i);
+int		ft_parsing(t_list *tab, const char *fmt, int i);
 
 int		ft_eval_dash(t_list *tab, const char *fmt, int i);
 
@@ -54,31 +52,24 @@ void	ft_print_char(t_list *tab);
 
 void	ft_print_string(t_list *tab);
 
-int 	ft_print_pointer(t_list *tab);
+int		ft_print_pointer(t_list *tab);
 
-int 	ft_print_integer(t_list *tab);
+int		ft_print_integer(t_list *tab);
 
-int 	ft_print_unsigned_hexadecimal_low(t_list *tab);
+int		ft_print_unsigned_hexadecimal_low(t_list *tab);
 
-int 	ft_print_unsigned_hexadecimal_high(t_list *tab);
+int		ft_print_unsigned_hexadecimal_high(t_list *tab);
 
-int 	ft_print_unsigned_decimal(t_list *tab);
+int		ft_print_unsigned_decimal(t_list *tab);
 
 void	ft_print_percent(t_list *tab);
 
-int 	ft_align_int(t_list *tab, int len, char *num);
+int		ft_align_int(t_list *tab, int len, char *num);
 
 void	ft_align_char(t_list *tab, int len);
 
 void	ft_complete_int(t_list *tab, int len);
 
 void	ft_complete_char(t_list *tab, int len);
-
-void	ft_print_null(t_list *tab, int len);
-
-void	ft_print_null_again(t_list *tab, int len);
-
-void	ft_print_space(t_list *tab, int len);
-
 
 #endif

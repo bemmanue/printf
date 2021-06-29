@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../libft/libft.h"
 
-int	ft_eval_space(t_list *tab, int i)
+static int	ft_eval_space(t_list *tab, int i)
 {
 	if (!tab->space)
 	{
@@ -23,9 +22,9 @@ int	ft_eval_space(t_list *tab, int i)
 	return (++i);
 }
 
-int	ft_type_parsing(t_list *tab, const char *fmt, int i)
+static int	ft_type_parsing(t_list *tab, const char *fmt, int i)
 {
-	int check;
+	int	check;
 
 	check = 0;
 	if (fmt[i] == 'c')
